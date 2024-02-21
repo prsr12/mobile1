@@ -92,7 +92,7 @@ private:
         while (true) {
             int clientSocket;
             timeval timeout{};
-            timeout.tv_sec = 60;
+            timeout.tv_sec = 10;
 
             fd_set readfds;
             FD_ZERO(&readfds);
@@ -101,7 +101,7 @@ private:
             int activity = select(serverSocket + 1, &readfds, nullptr, nullptr, &timeout);
 
             if (activity == 0) {
-                std::cout << "Inactivity of 60 seconds. Shutting down the server." << std::endl;
+                std::cout << "Inactivity of 10 seconds. Shutting down the server." << std::endl;
                 break;
             }
 
